@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="parser-cv:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="parser-cv-1.0.0-BUILD-SNAPSHOT.war">
+      <element id="artifact" artifact-name="parser-cv:war exploded" />
+    </root>
+  </artifact>
+</component>

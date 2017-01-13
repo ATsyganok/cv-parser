@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - cvdb@localhost" uuid="f9027a5e-eceb-47a3-b06d-13a7b5c9f026">
+    <database-info product="MySQL" version="5.5.23" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="cvdb"/>
+    <table name="contact" schema="" catalog="cvdb" type="TABLE">
+      <column name="Contact_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="EMAIL" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="FULL_NAME" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="LOCATION" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="PHONE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="weightContact" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="Contact_id"/>
+      <exported-key name="FK_9vqgb4dv3rw2vn5vmtu9v2cc5" table="cves" schema="" catalog="cvdb" columns="Contact_id"/>
+    </table>
+    <table name="cves" schema="" catalog="cvdb" type="TABLE">
+      <column name="id_cv" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="date" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="Education" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="Expierence" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="Language" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="Skills" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="Trainings" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="Contact_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="User_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="Objective" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="true" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="id_cv"/>
+      <foreign-key name="FK_9vqgb4dv3rw2vn5vmtu9v2cc5" columns="Contact_id" ref-table="contact" ref-schema="" ref-catalog="cvdb" ref-columns="Contact_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_pl4gsg7v1cuclj5m7amhnu9uf" columns="User_id" ref-table="users" ref-schema="" ref-catalog="cvdb" ref-columns="id_user" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_9vqgb4dv3rw2vn5vmtu9v2cc5" unique="false" columns="Contact_id"/>
+      <index name="FK_pl4gsg7v1cuclj5m7amhnu9uf" unique="false" columns="User_id"/>
+    </table>
+    <table name="uploaded_file" schema="" catalog="cvdb" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="location" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="nameSession" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="size" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="status" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="type" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="date" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="sessionID" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="user_roles" schema="" catalog="cvdb" type="TABLE">
+      <column name="user_role_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="role" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="username" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="user_role_id"/>
+      <foreign-key name="FK_9ry105icat2dux14oyixybw9l" columns="username" ref-table="user_security" ref-schema="" ref-catalog="cvdb" ref-columns="username" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="UK_stlxfukw77ov5w1wo1tm3omca" unique="true" columns="role,username"/>
+      <index name="FK_9ry105icat2dux14oyixybw9l" unique="false" columns="username"/>
+    </table>
+    <table name="user_security" schema="" catalog="cvdb" type="TABLE">
+      <column name="username" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="enabled" sqlType="BIT" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="password" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="username"/>
+      <exported-key name="FK_9ry105icat2dux14oyixybw9l" table="user_roles" schema="" catalog="cvdb" columns="username"/>
+    </table>
+    <table name="users" schema="" catalog="cvdb" type="TABLE">
+      <column name="id_user" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="date" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="nameAuth" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="sessionID" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id_user"/>
+      <exported-key name="FK_pl4gsg7v1cuclj5m7amhnu9uf" table="cves" schema="" catalog="cvdb" columns="User_id"/>
+    </table>
+  </data-source>
+</component>
