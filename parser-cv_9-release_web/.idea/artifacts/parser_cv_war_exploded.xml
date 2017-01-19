@@ -52,8 +52,6 @@
           <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.7.6" />
           <element id="library" level="project" name="Maven: junit:junit:4.4" />
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
-          <element id="library" level="project" name="Maven: ch.qos.logback:logback-classic:1.1.2" />
-          <element id="library" level="project" name="Maven: ch.qos.logback:logback-core:1.1.2" />
         </element>
       </element>
       <element id="directory" name="META-INF">

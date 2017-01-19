@@ -1,7 +1,7 @@
 package cloud.molddata.parser.cv.parser;
 
-import cloud.molddata.parser.cv.model.Contact;
 import cloud.molddata.parser.cv.model.CV;
+import cloud.molddata.parser.cv.model.Contact;
 
 import java.util.*;
 
@@ -94,8 +94,8 @@ public final class BoxParser {
                 checker.add(wordFindLanguages(token, textBlock));
                 checker.add(wordFindTrainings(token, textBlock));
                 checker.add(wordFindObjective(token, textBlock));
-                if(!checkerBox(checker)/*&&!checkP(tokenTrim(token))*/){
-                    textBlock.addUnrecognizedWord(tokenTrim(token));
+                if(!checkerBox(checker)){
+                    textBlock.addUnrecognizedWord(token);
                 }
                 textBlockSize+=1;
             }

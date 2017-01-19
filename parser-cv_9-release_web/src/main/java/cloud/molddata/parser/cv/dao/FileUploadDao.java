@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface FileUploadDao {
 
+  static final int i=0;
   List<UploadedFile> listFiles();
 
   List<Users> listUsers(String nameAuth, String sessionID);
