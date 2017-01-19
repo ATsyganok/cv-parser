@@ -89,23 +89,24 @@ public class Analyzer {
             cv.setTrainings(block.getTextBlock());
         else if ("objective".equals(block.getTypeBlock()))
             cv.setObjective(block.getTextBlock());
-
-        addNewWords(block);
+        //---------------------------------------
+        if(block.getUnrecognizedWords().size()>0)
+        addNewWords(block.getTypeBlock(),block.getUnrecognizedWords());
     }
 
-       private static void addNewWords(Block block){
-            if("skills".equals(block.getTypeBlock()))
-                WordsContent.add_WORD_SKILLS(block.getUnrecognizedWords());
-            else if("experience".equals(block.getTypeBlock()))
-                WordsContent.add_WORD_EXPERIENCE(block.getUnrecognizedWords());
-            else if("education".equals(block.getTypeBlock()))
-                WordsContent.add_WORD_EDUCATION(block.getUnrecognizedWords());
-            else if("languages".equals(block.getTypeBlock()))
-                WordsContent.add_WORD_LANGUAGE(block.getUnrecognizedWords());
-            else if("trainings".equals(block.getTypeBlock()))
-                WordsContent.add_WORD_TRAININGS(block.getUnrecognizedWords());
-            else if("objective".equals(block.getTypeBlock()))
-                WordsContent.add_WORD_OBJECTIVE(block.getUnrecognizedWords());
+       private static void addNewWords(String type,ArrayList<String> unrecognizedWords ){
+            if("skills".equals(type))
+                WordsContent.add_WORD_SKILLS(unrecognizedWords);
+            else if("experience".equals(type))
+                WordsContent.add_WORD_EXPERIENCE(unrecognizedWords);
+            else if("education".equals(type))
+                WordsContent.add_WORD_EDUCATION(unrecognizedWords);
+            else if("languages".equals(type))
+                WordsContent.add_WORD_LANGUAGE(unrecognizedWords);
+            else if("trainings".equals(type))
+                WordsContent.add_WORD_TRAININGS(unrecognizedWords);
+            else if("objective".equals(type))
+                WordsContent.add_WORD_OBJECTIVE(unrecognizedWords);
     }
 
     private static Block findMaxBlock(Set<Block> blockSet) {
@@ -116,6 +117,8 @@ public class Analyzer {
         Block maxBlock = null;
         for (Block block : blockSet) {
             type = block.getTypeBlock();
+            if(block.getTextBlockSize()<=1)
+                continue;
             if ((type.equals("skills") && block.getPointSkills() > maxPoint)||(type.equals("skills") && block.getPercentSkills() > maxPercent && block.getTextBlockSize() > textSize)) {
                 maxPoint = block.getPointSkills();
                 maxPercent = block.getPercentSkills();
@@ -151,7 +154,7 @@ public class Analyzer {
                 //---------------
                 maxBlock = block;
                 //---------------
-            }else if ((type.equals("objective") && block.getPointSkills() > maxPoint)||(type.equals("objective") &&  block.getPercentObjective() > maxPercent && block.getTextBlockSize() > textSize)) {
+            }else if ((type.equals("objective") && block.getPointObjective() > maxPoint)||(type.equals("objective") &&  block.getPercentObjective() > maxPercent && block.getTextBlockSize() > textSize)) {
                 maxPoint = block.getPointObjective();
                 maxPercent = block.getPercentObjective();
                 textSize = block.getTextBlockSize();
