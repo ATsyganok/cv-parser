@@ -6,31 +6,12 @@ import java.util.List;
 
 public interface FileUploadDao {
 
-  static final int i=0;
-  List<UploadedFile> listFiles();
+    static final int i = 0;
 
-  List<Users> listUsers(String nameAuth, String sessionID);
+    List<UploadedFile> getListFiles();
 
-  List<Users> listUsersAll();
+    UploadedFile getFile(Long id);
 
-  List<UserSecurity> listUsersAuth();
-
-  UploadedFile getFile(Long id);
-
-  UploadedFile saveFile(UploadedFile uploadedFile);
-
-  Contact saveParsedCVes(List<UploadedFile> activeFilesInSession);
-
-  void createUser(String sessionID);
-
-  void saveParsedCV(List<UploadedFile> activeFilesInSession);
-
-  String getContactForThis(String id_cont);
-
-  Contact contInfo(String id_cont);
-
-  List<CV> listCVes();
-
-  String parseStatus(UploadedFile activeFileInSession);
+    UploadedFile saveFile(UploadedFile uploadedFile);
 
 }

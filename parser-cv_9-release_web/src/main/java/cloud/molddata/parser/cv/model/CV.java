@@ -56,13 +56,13 @@ public class CV {
     private Contact contact;
 
     //CV has Cont_ID
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Contact_id")
     public Contact getContact() {
         return this.contact;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "User_id", nullable = true)
     public Users getUsersByFK() {
         return usersByFK;
@@ -71,25 +71,25 @@ public class CV {
     public Date getDate() {
         return this.date;
     }
-    @Column(name = "Skills", nullable = false, length = 5000)
+    @Column(name = "Skills", nullable = false, length = 500)
     public String getSkills() {
         return skills;
     }
-    @Column(name = "Expierence", nullable = true, length = 5000)
+    @Column(name = "Expierence", nullable = true, length = 500)
     public String getExp() {
         return exp;
     }
-    @Column(name = "Language", nullable = true, length = 5000)
+    @Column(name = "Language", nullable = true, length = 500)
     public String getLang() {
         return lang;
     }
-    @Column(name = "Education", nullable = true, length = 5000)
+    @Column(name = "Education", nullable = true, length = 500)
     public String getEdu() {
         return edu;
     }
-    @Column(name="Trainings",nullable = true,length = 5000)
+    @Column(name="Trainings",nullable = true,length = 500)
     public String getTrainings(){return trainings;}
-    @Column(name="Objective",nullable = true,length = 5000)
+    @Column(name="Objective",nullable = true)
     public String getObjective(){return objective;}
 
     public void setId(long id) {

@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -16,6 +17,10 @@
 
 </head>
 <body>
+<c:set var="timeZoneCurrent" value="<%=new java.util.Date().getTimezoneOffset()%>"/>
+<c:set var="GMTCurrent" value="${timeZoneCurrent/60*(-1)}"/>
+<fmt:parseNumber var="intGMTCurrent" integerOnly="true" type="number" value="${GMTCurrent}"/>
+<fmt:setTimeZone value="GMT+${intGMTCurrent}" scope="session"/>
 	<div class="container">
 		<div class="panel panel-default">
 			<div class="panel-heading text-center">

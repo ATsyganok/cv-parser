@@ -7,16 +7,12 @@
     <file url="file://$PROJECT_DIR$/src/main/java/cloud/molddata/parser/cv/model/Users.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/cloud/molddata/parser/cv/parser/Analyzer.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/cloud/molddata/parser/cv/parser/Block.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/cloud/molddata/parser/cv/parser/BoxParser.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/cloud/molddata/parser/cv/parser/JSONCC.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/cloud/molddata/parser/cv/parser/SeacrherRegByPh.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/cloud/molddata/parser/cv/parser/SearchBoxParser.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/cloud/molddata/parser/cv/parser/WordsContent.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/cloud/molddata/parser/cv/service/UserService.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/cloud/molddata/parser/cv/service/impl/UserServiceImpl.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/loginBS.jsp" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/registration.jsp" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/resources/css/common.css" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/test/java/SearchBoxParserTest.java" charset="UTF-8" />
   </component>
 </project>

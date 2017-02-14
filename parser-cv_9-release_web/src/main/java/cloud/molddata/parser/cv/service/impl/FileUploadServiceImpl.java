@@ -26,29 +26,10 @@ public class FileUploadServiceImpl implements FileUploadService {
 
   @Override
   @Transactional(readOnly = true)
-  public List<UploadedFile> listFiles(){
+  public List<UploadedFile> getListFiles(){
 
-    return dao.listFiles();
+    return dao.getListFiles();
   }
-    @Override
-    @Transactional(readOnly = true)
-    public List<Users> listUsers(String nameAuth, String sessionID) {
-
-        return dao.listUsers(nameAuth, sessionID);
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<Users> listUsersAll() {
-
-        return dao.listUsersAll();
-    }
-    @Override
-        @Transactional(readOnly = true)
-        public List<UserSecurity> listUsersAuth() {
-
-            return dao.listUsersAuth();
-        }
 
   @Override
   @Transactional(readOnly = true)
@@ -63,47 +44,5 @@ public class FileUploadServiceImpl implements FileUploadService {
 
   }
 
-    @Override
-    @Transactional
-    public void createUser(String sessionID) {
-        dao.createUser(sessionID);
-    }
-
-    @Override
-    @Transactional
-    public void saveParsedCV(List<UploadedFile> activeFilesInSession){
-        dao.saveParsedCV(activeFilesInSession);
-    }
-    @Override
-    @Transactional
-    public Contact saveParsedCVes(List<UploadedFile> activeFilesInSession){
-        return dao.saveParsedCVes(activeFilesInSession);
-    }
-
-    @Override
-    @Transactional
-    public String parseStatus(UploadedFile activeFileInSession){
-        return dao.parseStatus(activeFileInSession);
-    }
-
-    @Override
-    @Transactional
-    public String getContactForThis(String id_cont){
-        return dao.getContactForThis(id_cont);
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<CV> listCVes() {
-
-        return dao.listCVes();
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public Contact contInfo(String id_cont) {
-
-        return dao.contInfo(id_cont);
-    }
 
 }

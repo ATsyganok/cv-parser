@@ -38,13 +38,13 @@ public class Contact {
     @Column(name = "Contact_id", unique = true, nullable = false)
     public long getId() {        return id;    }
 
-    @Column(name = "FULL_NAME", nullable = true, length = 100)
+    @Column(name = "FULL_NAME", length = 50)
     public String getFullName() {        return fullName;    }
 
-    @Column(name = "PHONE", nullable = true)
+    @Column(name = "PHONE")
     public String getPhone() {        return phone;    }
 
-    @Column(name = "LOCATION", nullable = true, length = 5000)
+    @Column(name = "LOCATION", length = 50)
     public String getLocation() {        return location;    }
 
     @OneToOne(fetch = FetchType.LAZY)//mappedBy = Contact

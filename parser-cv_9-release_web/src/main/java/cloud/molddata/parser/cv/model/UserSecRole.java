@@ -40,7 +40,7 @@ public class UserSecRole {
 	public void setuserSecurity(UserSecurity user) {
 		this.userSecurity = user;
 	}
-	@Enumerated(EnumType.STRING)
+	@Enumerated(EnumType.ORDINAL)
 	@Column(name = "role", nullable = false, length = 45)
 	public UserRole getRole() {
 		return this.role;

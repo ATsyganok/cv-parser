@@ -88,7 +88,8 @@
 							<td><c:out value="${countRow}" /></td>
 							<td><c:out value="${dataFile.name}" /></td>
 							<td><c:out value="${dataFile.type}" /></td>
-							<td><c:out value="${dataFile.date}" /></td>
+							<%--<td><c:out value="${dataFile.date}" /></td>--%>
+							<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${dataFile.date}"/></td>
 							<c:set var="countRow" value="${countRow + 1}" scope="page" />
 						<%--<c:if test="${nameSession == 'test1'}">	<td><c:out value="${dataFile.sessionID}" /></td> </c:if>--%>
 							<td>
