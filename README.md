@@ -5,6 +5,8 @@ How it works?
 ----------------------------
 Project Name: CV-parser
 
+Project on web:  <a href="http://cv-parser.molddata.cloud/">cv-parser.molddata.cloud</a>
+
 Application: Web-based application for automatic resume parser and Structure analysis for object recognition: Contact (name, phone), experience, skills, language skills, education, and others.
 
 Input (restrictions apply):
@@ -39,6 +41,8 @@ Bootstrap
  
 -----------------------------------------
 Название проекта: CV-parser
+
+Проект в web:  <a href="http://cv-parser.molddata.cloud/">cv-parser.molddata.cloud</a>
  
 Назначение: веб-приложение для автоматического парсера резюме и анализа его структуры для распознавания объектов: контакты (имя, телефон), опыта работы, навыки, знания языков, образования и др.
  
