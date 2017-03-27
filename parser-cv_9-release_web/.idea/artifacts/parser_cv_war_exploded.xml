@@ -55,7 +55,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="D:\Project\last\web\parser-cv_9-release_web_2_local\target/MANIFEST.MF" />
+        <element id="file-copy" path="C:\my_data\Project\last\web\parser-cv_9-release_web\target/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="parser-cv/web/Web" />
     </root>
