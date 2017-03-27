@@ -1,4 +1,4 @@
-package cloud.molddata.parser.cv.controller;
+package cloud.molddata.parser.cv.initializer;
 
 import cloud.molddata.parser.cv.config.AppConfig;
 import cloud.molddata.parser.cv.config.RootConfig;

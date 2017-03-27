@@ -36,8 +36,6 @@ public class MyUserDetailsService implements UserDetailsService {
 	}
 
 	// Converts com.parser.cv.model.User user to
-	// Converts com.parser.cv.model.User user to
-	// Converts com.parser.cv.model.User user to
 	// org.springframework.security.core.userdetails.User
 	private User buildUserForAuthentication(UserSecurity userSec, List<GrantedAuthority> authorities) {
 		return new User(userSec.getUsername(), userSec.getPassword(), userSec.isEnabled(), true, true, true, authorities);
