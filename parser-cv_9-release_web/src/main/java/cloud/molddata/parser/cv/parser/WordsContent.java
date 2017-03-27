@@ -10,7 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class WordsContent{
-    private static final String filePath=Paths.pFolderDictionary;
+    private static final String filePath=Paths.P_FOLDER_DICTIONARY;
     private static final Set<String> fCOMMON_WORDS_EXCLUDE = new LinkedHashSet<>();
     private static final Set<String> fCOMMON_WORDS_SKILLS = new LinkedHashSet<>();
     private static final Set<String> fCOMMON_WORDS_EDUCATION = new LinkedHashSet<>();

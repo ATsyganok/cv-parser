@@ -23,7 +23,7 @@ import java.util.List;
  * JDK 7+.
  */
 public final class FileParcer {
-    private static String path=Paths.pfolderUploades;
+    private static String path=Paths.P_FOLDER_UPLOADES;
     private static int MaxSize=40;
     private static int MinSize=3;
     private static CV cv;

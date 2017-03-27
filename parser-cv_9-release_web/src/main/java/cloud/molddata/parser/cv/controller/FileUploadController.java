@@ -31,7 +31,7 @@ import java.util.Map;
 
 @Controller
 public class FileUploadController {
-  private static String path=Paths.pfolderUploades;
+  private static String path=Paths.P_FOLDER_UPLOADES;
 
   private static List<UploadedFile> activeFilesInSession;
 
@@ -62,24 +62,18 @@ public class FileUploadController {
     return "/fileUploader";
   }
 
-  @RequestMapping(value = "/uploaded", method = RequestMethod.POST) //value = "/upload",
+  @RequestMapping(value = "/uploaded", method = RequestMethod.POST)
   public @ResponseBody List<UploadedFile> upload(MultipartHttpServletRequest request,
       HttpServletResponse response) throws IOException {
     String sessionID = request.getSession().getId();
-
-    // Getting uploaded files from the request object
     Map<String, MultipartFile> fileMap = request.getFileMap();
-
-    // Maintain a list to send back the files info. to the client side
     List<UploadedFile> uploadedFiles = new ArrayList<UploadedFile>();
 
     for (MultipartFile multipartFile : fileMap.values()) {
       if (confirmType((getTypeFile(multipartFile)))) {
         saveFileToLocalDisk(multipartFile);
-        //activeFilesInSession.add(fileInfo);
         UploadedFile fileInfo = getUploadedFileInfo(multipartFile,true,sessionID);
-        fileInfo = saveFileToDatabase(fileInfo); //load fileINFO to DB!!!!!!!!!!!!
-        // adding the file info to the list
+        fileInfo = saveFileToDatabase(fileInfo);
         uploadedFiles.add(fileInfo);
       }else
         uploadedFiles.add(getUploadedFileInfo(multipartFile,false,sessionID));
@@ -88,7 +82,7 @@ public class FileUploadController {
     return uploadedFiles;
   }
 
-  @RequestMapping(value = "/parse", method = RequestMethod.POST) //value = "/upload",
+  @RequestMapping(value = "/parse", method = RequestMethod.POST) 
   public @ResponseBody String parse() throws IOException {
     String filesParsed = "";
     for (int i =0; i<getActiveFilesInSession().size();i++){
@@ -96,9 +90,8 @@ public class FileUploadController {
               cvParserService.getParseStatus(getActiveFilesInSession().get(i))+"\n";
     }
     cvParserService.saveListParsedCV(getActiveFilesInSession());
-    //-------------- clean List<UploadedFile> activeFilesInSession
     setActiveFilesInSession(new ArrayList<UploadedFile>());
-    //----------------------------------------------------
+
     return filesParsed;
   }
 
@@ -109,10 +102,11 @@ public class FileUploadController {
                                       Map<String, Object> map) throws IOException {
     String ContactID = request.getParameter(("contID")).toString();
     Contact cont = cvParserService.getContactInfo(ContactID);
-    String nameCont = cont.getPhone(); //+"   ID="+cont.getId()
+    String nameCont = cont.getPhone();
     response.setHeader("HeadSessionFullName", cont.getFullName());
     response.setHeader("HeadSessionRegion", cont.getLocation());
     response.setHeader("HeadSessionEmail", cont.getEmail());
+
     return nameCont;
   }
 
@@ -120,12 +114,11 @@ public class FileUploadController {
   @RequestMapping(value = {"/list"})
   public String listBooks(Map<String, Object> map, HttpServletRequest request) {
     String sessionID = request.getSession().getId();
-
     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     String nameAuth = auth.getName();
-
     map.put("fileList", fileUploadService.getListFiles());
     map.put("userList", userUploadService.getListUsersByName(nameAuth, sessionID));
+
     return "/listFiles";
   }
 
@@ -137,6 +130,7 @@ public class FileUploadController {
     Authentication nameAuth = SecurityContextHolder.getContext().getAuthentication();
     map.put("cvList", cvParserService.getListCV());
     map.put("userList", userUploadService.getListUsersByName(nameAuth.getName(), sessionID));
+
     return "/listCVes";
   }
 
@@ -144,18 +138,12 @@ public class FileUploadController {
 
   @RequestMapping(value = "/get/{fileId}", method = RequestMethod.GET)
   public void getFile(HttpServletResponse response, @PathVariable Long fileId) {
-
     UploadedFile dataFile = fileUploadService.getFile(fileId);
-
     File file = new File(dataFile.getLocation(), dataFile.getName());
-
     try {
       response.setContentType(dataFile.getType());
-      response.setHeader("Content-disposition", "attachment; filename=\"" + dataFile.getName()
-          + "\"");
-
+      response.setHeader("Content-disposition", "attachment; filename=\"" + dataFile.getName()         + "\"");
       FileCopyUtils.copy(FileUtils.readFileToByteArray(file), response.getOutputStream());
-
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -171,11 +159,11 @@ public class FileUploadController {
     for(String type:types){
       if(type.equals(typeFile)) return true;
     }
+
     return false;
   }
 
-  private void saveFileToLocalDisk(MultipartFile multipartFile) throws IOException,
-      FileNotFoundException {
+  private void saveFileToLocalDisk(MultipartFile multipartFile) throws IOException {
     String outputFileName = getOutputFilename(multipartFile);
     FileCopyUtils.copy(multipartFile.getBytes(), new FileOutputStream(outputFileName));
   }
@@ -200,7 +188,6 @@ public class FileUploadController {
     return fileInfo;
   }
 
-  //show info in dialog after btn-parsed
   private static List<UploadedFile> getUploadedFiles(List<UploadedFile> uploadedFileList){
     List<UploadedFile> finalList = new ArrayList<>();
     for (UploadedFile file:uploadedFileList){

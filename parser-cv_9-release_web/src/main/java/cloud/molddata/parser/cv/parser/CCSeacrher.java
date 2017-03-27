@@ -41,13 +41,13 @@ public class CCSeacrher {
         }
         switch (requestPhone.substring(1, 2)){
             case "1":
-                path = Paths.pFolderPhones+"phones-us.json";
+                path = Paths.P_FOLDER_PHONES +"phones-us.json";
                 break;
             case "7":
-                path = Paths.pFolderPhones+"phones-ru.json";
+                path = Paths.P_FOLDER_PHONES +"phones-ru.json";
                 break;
             default:
-                path = Paths.pFolderPhones+"phone-codes.json";
+                path = Paths.P_FOLDER_PHONES +"phone-codes.json";
                 break;
         }
         return path;
