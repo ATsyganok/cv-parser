@@ -20,13 +20,16 @@ public class Contact {
     private String email;
 
 
-    public Contact(){}
-    public Contact(String fullName,String phone, String location){
+    public Contact() {
+    }
+
+    public Contact(String fullName, String phone, String location) {
         this.fullName = fullName;
         this.phone = phone;
         this.location = location;
     }
-    public Contact(CV cv, String fullName,String phone, String location){
+
+    public Contact(CV cv, String fullName, String phone, String location) {
         this.cv = cv;
         this.fullName = fullName;
         this.phone = phone;
@@ -36,23 +39,35 @@ public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Contact_id", unique = true, nullable = false)
-    public long getId() {        return id;    }
+    public long getId() {
+        return id;
+    }
 
     @Column(name = "FULL_NAME", length = 50)
-    public String getFullName() {        return fullName;    }
+    public String getFullName() {
+        return fullName;
+    }
 
     @Column(name = "PHONE")
-    public String getPhone() {        return phone;    }
+    public String getPhone() {
+        return phone;
+    }
 
     @Column(name = "LOCATION", length = 50)
-    public String getLocation() {        return location;    }
+    public String getLocation() {
+        return location;
+    }
 
-    @OneToOne(fetch = FetchType.LAZY)//mappedBy = Contact
+  /*  @OneToOne(fetch = FetchType.LAZY)//mappedBy = Contact
     @PrimaryKeyJoinColumn
+    @JoinColumn(name = "cv_id")*/
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cv_id")
-    public CV getcv() {        return cv;    }
+    public CV getcv() {
+        return cv;
+    }
 
-    @Column(name ="EMAIL")
+    @Column(name = "EMAIL")
     public String getEmail() {
         return email;
     }
@@ -61,16 +76,37 @@ public class Contact {
         return weightContact;
     }
 
-    public void setId(long id) {        this.id = id;    }
-    public void setFullName(String fullName) {        this.fullName = fullName;    }
-    public void setPhone(String phone) {        this.phone = phone;    }
-    public void setLocation(String location) {        this.location = location;    }
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
-    public void setCv(CV cv) {        this.cv = cv;    }
-    public void setText(String text) {        this.text = text;    }
-    public void setWeightContact(int weightContact) {        this.weightContact = weightContact;    }
+
+    public void setCv(CV cv) {
+        this.cv = cv;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public void setWeightContact(int weightContact) {
+        this.weightContact = weightContact;
+    }
 
     @Override
     public String toString() {

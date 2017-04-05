@@ -19,8 +19,10 @@ public class Users {
     private Date date = new Date();
     private List<CV> cves = new ArrayList<>();
 
-    public Users(){    }
-    public Users(String sessionID, String nameAuth){
+    public Users() {
+    }
+
+    public Users(String sessionID, String nameAuth) {
         this.sessionID = sessionID;
         this.nameAuth = nameAuth;
     }
@@ -31,14 +33,20 @@ public class Users {
     public long getId() {
         return id;
     }
+
     @OneToMany(mappedBy = "usersByFK", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    public List<CV> getCves() {        return cves;    }
+    public List<CV> getCves() {
+        return cves;
+    }
+
     public String getSessionID() {
         return sessionID;
     }
+
     public String getNameAuth() {
         return nameAuth;
     }
+
     public Date getDate() {
         return this.date;
     }
@@ -46,22 +54,26 @@ public class Users {
     public void setSessionID(String sessionID) {
         this.sessionID = sessionID;
     }
+
     public void setNameAuth(String nameAuth) {
         this.nameAuth = nameAuth;
     }
+
     public void setCves(List<CV> cves) {
         this.cves = cves;
     }
+
     public void setId(long id) {
         this.id = id;
     }
+
     @Temporal(TemporalType.DATE)
     @Column(name = "DATE", unique = true, nullable = false, length = 10)
     public void setDate(Date date) {
         this.date = date;
     }
 
-    public void addCV(CV cv){
+    public void addCV(CV cv) {
         cv.setUsersByFK(this);
         cves.add(cv);
     }
