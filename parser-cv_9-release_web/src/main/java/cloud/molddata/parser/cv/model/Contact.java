@@ -58,9 +58,6 @@ public class Contact {
         return location;
     }
 
-  /*  @OneToOne(fetch = FetchType.LAZY)//mappedBy = Contact
-    @PrimaryKeyJoinColumn
-    @JoinColumn(name = "cv_id")*/
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cv_id")
     public CV getcv() {
